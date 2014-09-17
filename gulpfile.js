@@ -16,6 +16,7 @@ var gulp = require('gulp'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
     del = require('del'),
+    uncss = require('gulp-uncss'),
     bowerFiles = require('bower-files')();
 
  // Path and file variables
@@ -71,6 +72,9 @@ gulp.task('cssven', function() {
     .pipe(sass())
     .pipe(concat('vendor.min.css'))
     .pipe(minifycss())
+    .pipe(uncss({
+            html: ['../index.html']
+        }))
     .pipe(gulp.dest(paths.styles.dest))
     .pipe(notify({ message: 'That vendor SCSS & CSS shit is done'}));
 });
