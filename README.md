@@ -7,7 +7,7 @@ Inside the root where package.json and the rest of these files are in the repo t
 
 	$ npm install
 	$ bower install
-	$ gulp watch.
+	$ gulp watch
 
 You are now ready to edit or add any files into assets and gulp will automagically do everything. 
 
