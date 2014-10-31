@@ -17,6 +17,7 @@ var gulp         = require('gulp'),
     livereload   = require('gulp-livereload'),
     del          = require('del'),
     uncss        = require('gulp-uncss'),
+    rev          = require('gulp-rev'),
     bowerFiles   = require('bower-files')();
 
 // Path and file variables
@@ -67,7 +68,9 @@ gulp.task('css', function() {
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(minifycss())
+    .pipe(rev())
     .pipe(gulp.dest(paths.styles.dest))
+    .pipe(rev.manifest())
     .pipe(notify({ message: 'CSS shit done' }));
 });
 
@@ -80,7 +83,9 @@ gulp.task('cssven', function() {
     .pipe(uncss({
             html: [htmlToUnCSS.folderToCheck]
         }))
+    .pipe(rev())
     .pipe(gulp.dest(paths.styles.dest))
+    .pipe(rev.manifest())
     .pipe(notify({ message: 'That vendor SCSS & CSS shit is done'}));
 });
 
@@ -91,7 +96,9 @@ gulp.task('js', function() {
     .pipe(jshint.reporter('default'))
     .pipe(concat('main.min.js'))
     .pipe(uglify())
+    .pipe(rev())
     .pipe(gulp.dest(paths.scripts.dest))
+    .pipe(rev.manifest())
     .pipe(notify({ message: 'JS shit finished' }));
 });
 
@@ -100,7 +107,9 @@ gulp.task('jsven', function() {
   gulp.src(bowerFiles.js)
     .pipe(concat('vendor.min.js'))
     .pipe(uglify())
+    .pipe(rev())
     .pipe(gulp.dest(paths.scripts.dest))
+    .pipe(rev.manifest())
     .pipe(notify({ message: 'JS vendor shit copied' }));
 });
 
