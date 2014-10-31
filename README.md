@@ -30,7 +30,7 @@ This will start the process of watching your source files. If anything changes i
 
 #### Adding Dependencies 
 
-If you add frontend libraries with do it with: 
+If you add frontend libraries do it with: 
 
 	$ bower install libraryname --save 
 
