@@ -9,9 +9,9 @@ The Magical Working Out of the Box Gulp and Bower Setup
 
 Inside the root where package.json and the rest of these files are in the repo type: 
 
-$ npm install
-$ bower install
-$ gulp watch.
+	$ npm install
+	$ bower install
+	$ gulp watch.
 
 You are now ready to edit or add any files into assets and gulp will automagically do everything. 
 
