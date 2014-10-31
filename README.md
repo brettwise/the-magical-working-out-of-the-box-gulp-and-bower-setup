@@ -1,26 +1,24 @@
-A Good Baseline Gulp & Bower Config 
+# A Good Baseline Gulp & Bower Config 
 
-or 
+# or 
 
 The Magical Working Out of the Box Gulp and Bower Setup
 =======================================================
 
-### TLDR (in Only 5 Steps!)
+### TLDR (in Only 3 commands!)
 
-1. Inside the root where package.json is located type: 
+Inside the root where package.json and the rest of these files are in the repo type: 
+
 $ npm install
-
-2. Then: 
 $ bower install
-
-3. Then: 
 $ gulp watch.
 
-4. You are now ready to edit or add any files into assets and gulp will automagically do everything. 
-5. If you want more detail keep reading.
+You are now ready to edit or add any files into assets and gulp will automagically do everything. 
+
+If you want more detail keep reading.
 
 
-### Too Long and Did Read! (Good on you!)
+#### Too Long and Did Read! (Good on you!)
 
 $ npm install
 
