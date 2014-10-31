@@ -2,32 +2,37 @@
  * gulp
  */
 
- // Load plugins
-var gulp = require('gulp'),
-    sass = require('gulp-sass'),
+// Load plugins
+var gulp         = require('gulp'),
+    sass         = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
-    minifycss = require('gulp-minify-css'),
-    jshint = require('gulp-jshint'),
-    uglify = require('gulp-uglify'),
-    imagemin = require('gulp-imagemin'),
-    rename = require('gulp-rename'),
-    concat = require('gulp-concat'),
-    notify = require('gulp-notify'),
-    cache = require('gulp-cache'),
-    livereload = require('gulp-livereload'),
-    del = require('del'),
-    uncss = require('gulp-uncss'),
-    bowerFiles = require('bower-files')();
+    minifycss    = require('gulp-minify-css'),
+    jshint       = require('gulp-jshint'),
+    uglify       = require('gulp-uglify'),
+    imagemin     = require('gulp-imagemin'),
+    rename       = require('gulp-rename'),
+    concat       = require('gulp-concat'),
+    notify       = require('gulp-notify'),
+    cache        = require('gulp-cache'),
+    livereload   = require('gulp-livereload'),
+    del          = require('del'),
+    uncss        = require('gulp-uncss'),
+    bowerFiles   = require('bower-files')();
 
- // Path and file variables
+// Path and file variables
 
-// Duh, base paths
+  // The HTML Files to Interate Through When UnCSSing
+var htmlToUnCSS = {
+  folderToCheck: '../*.html'
+};
+
+  // Duh, base paths
 var basePaths = {
   src: 'src/',
   dest: 'dest/'
 };
 
-// Paths to file specific directories
+  // Paths to file specific directories
 var paths = {
   images: {
     src: basePaths.src + 'img/',
@@ -73,7 +78,7 @@ gulp.task('cssven', function() {
     .pipe(concat('vendor.min.css'))
     .pipe(minifycss())
     .pipe(uncss({
-            html: ['../index.html']
+            html: [htmlToUnCSS.folderToCheck]
         }))
     .pipe(gulp.dest(paths.styles.dest))
     .pipe(notify({ message: 'That vendor SCSS & CSS shit is done'}));
