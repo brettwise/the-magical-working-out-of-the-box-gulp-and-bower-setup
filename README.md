@@ -1,4 +1,4 @@
-# A Good Baseline Gulp & Bower Config (or The Magical Working Out of the Box Gulp and Bower Setup)
+A Good Baseline Gulp & Bower Config (or The Magical Working Out of the Box Gulp and Bower Setup)
 =======================================================
 
 ### TLDR (in Only 3 commands!)
