@@ -2,7 +2,7 @@
  * gulp
  */
 
-// Load plugins
+// Load modules
 var gulp         = require('gulp'),
     sass         = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
