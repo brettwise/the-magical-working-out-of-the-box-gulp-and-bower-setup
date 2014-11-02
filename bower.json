@@ -30,7 +30,6 @@
   "dependencies": {
     "animate.css": "~3.2.0",
     "normalize.css": "~3.0.1",
-    "impress.js": "~0.5.3",
     "jquery": "~2.1.1"
   }
 }
