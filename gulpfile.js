@@ -61,59 +61,40 @@ var myFiles = {
   fonts: paths.fonts.src + '**/*.{ttf,woff,eof,svg}'
 };
 
-// Styles
+// All the CSS things.
 gulp.task('css', function() {
-  gulp.src(myFiles.styles)
-    .pipe(sass())
+  gulp.src([
+    bowerFiles.css,
+    myFiles.styles 
+    ])
+    .pipe(concat('main.min.css'))
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(minifycss())
-    .pipe(rev())
-    .pipe(gulp.dest(paths.styles.dest))
-    .pipe(rev.manifest())
-    .pipe(notify({ message: 'CSS shit done' }));
-});
-
-// Compile copy and minify vendor styles
-gulp.task('cssven', function() {
-  gulp.src(bowerFiles.css)
     .pipe(sass())
-    .pipe(concat('vendor.min.css'))
     .pipe(minifycss())
     .pipe(uncss({
-            html: [htmlToUnCSS.folderToCheck]
-        }))
-    .pipe(rev())
+              html: [htmlToUnCSS.folderToCheck]
+          }))
     .pipe(gulp.dest(paths.styles.dest))
-    .pipe(rev.manifest())
-    .pipe(notify({ message: 'That vendor SCSS & CSS shit is done'}));
+    .pipe(notify({ message: 'CSS app & vendor styles processed.'}));
 });
 
-// Scripts
+// All the JS processing.
 gulp.task('js', function() {
-  gulp.src(myFiles.scripts)
+  gulp.src([
+    bowerFiles.js,
+    myFiles.scripts
+    ])
+    .pipe(concat('main.min.js'))
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
-    .pipe(concat('main.min.js'))
-    .pipe(uglify())
-    .pipe(rev())
+    .pipe(unglify())
+    // .pipe(rev())
     .pipe(gulp.dest(paths.scripts.dest))
-    .pipe(rev.manifest())
-    .pipe(notify({ message: 'JS shit finished' }));
+    // .pipe(rev.manifest())
+    .pipe(notify({ message: 'JS stuff done.' }));
 });
 
-// Copy and minify vendor javascript
-gulp.task('jsven', function() {
-  gulp.src(bowerFiles.js)
-    .pipe(concat('vendor.min.js'))
-    .pipe(uglify())
-    .pipe(rev())
-    .pipe(gulp.dest(paths.scripts.dest))
-    .pipe(rev.manifest())
-    .pipe(notify({ message: 'JS vendor shit copied' }));
-});
-
-// Images
+// Images Processing
 gulp.task('img', function() {
   gulp.src(myFiles.images)
     .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
@@ -121,7 +102,7 @@ gulp.task('img', function() {
     .pipe(notify({ message: 'Image shit complete' }));
 });
 
-// Fonts
+// Font Processing
 gulp.task('copy_fonts', function() {
   gulp.src(myFiles.fonts)
   .pipe(gulp.dest(paths.fonts.dest));
@@ -140,18 +121,11 @@ gulp.task('default', ['clean'], function() {
 // Watch
 gulp.task('watch', function() {
 
-  // Watch my .scss files
-  gulp.watch(myFiles.styles, ['css']);
+  // Watch CSS
+  gulp.watch([myFiles.styles, bowerFiles.css], ['css']);
 
-  //Watch vendor styles
-  gulp.watch(bowerFiles.css, ['cssven']);
-  // gulp.watch('assets/styles/scss/vendor/*.scss', ['cssven']);
-
-  // Watch my .js files
-  gulp.watch(myFiles.scripts, ['js']);
-
-  // Watch .js vendor files
-  gulp.watch(bowerFiles.js, ['jsven']);
+  // Watch JS
+  gulp.watch([myFiles.scripts, bowerFiles.js], ['js']);
 
   // Watch image files
   gulp.watch(paths.images.src + '**/*', ['img']);
