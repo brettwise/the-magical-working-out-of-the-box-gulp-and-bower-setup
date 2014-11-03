@@ -35,3 +35,10 @@ If you add frontend libraries do it with:
 	$ bower install libraryname --save 
 
 gulp will take those files, do it's magic and your page will be updated on refresh. 
+
+
+## Credit Where Credit is Due
+
+Two peoples' blog posts really helped with this.
+1. [Mike Street](http://www.mikestreety.co.uk/blog/an-advanced-gulpjs-file)
+2. [Mark Goodyear](http://markgoodyear.com/2014/01/getting-started-with-gulp/)
