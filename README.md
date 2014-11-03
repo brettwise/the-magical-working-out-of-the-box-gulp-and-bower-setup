@@ -40,5 +40,6 @@ gulp will take those files, do it's magic and your page will be updated on refre
 ## Credit Where Credit is Due
 
 Two peoples' blog posts really helped with this.
-	* [Mike Street](http://www.mikestreety.co.uk/blog/an-advanced-gulpjs-file)
-	* [Mark Goodyear](http://markgoodyear.com/2014/01/getting-started-with-gulp/)
+
+- [Mike Street](http://www.mikestreety.co.uk/blog/an-advanced-gulpjs-file)
+- [Mark Goodyear](http://markgoodyear.com/2014/01/getting-started-with-gulp/)
